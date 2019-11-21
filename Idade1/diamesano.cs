@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Idade1
+namespace Idade
 {
     class diamesano
     {
@@ -16,10 +16,8 @@ namespace Idade1
             set
             {
                 data = Convert.ToDateTime(value);
-
             }
         }
-
         public string envia
         {
             get
@@ -28,21 +26,27 @@ namespace Idade1
 
                 int anos = today.Year - data.Year;
                 int meses = today.Month - data.Month;
-                int dias = today.Day - data.Day;
                 if (meses < 0)
                 {
                     anos--;
-                    meses++;
-                    dias +=;
+                    meses += 12;
                 }
 
-                string frase = "A sua idade é";
-                frase += anos.ToString() + "anos";
-                frase += anos.ToString() + "meses";
-                frase += anos.ToString() + "dias";
+                int dias = today.Day - data.Day;
+                if (meses < 0)
+                {
+                    meses--;
+                    dias += 30;
+                }
 
+                string frase = "A sua idade é ";
+                frase += anos.ToString() + " anos ";
+                frase += meses.ToString() + " meses ";
+                frase += dias.ToString() + " dias.";
+
+
+                return frase;
             }
-
         }
 
     }
